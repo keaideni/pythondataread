@@ -15,20 +15,23 @@ EnergyN=[]
 #i=0
 for firstdir in os.listdir(path):
     firstdirname=path+'\\'+firstdir
+
     if os.path.isdir(firstdirname):
         for seconddir in os.listdir(path+'\\'+firstdir):
-            filename=path+'\\'+firstdir+'\\'+seconddir+'\\resultN'
+            filename=path+'\\'+firstdir+'\\'+seconddir+'\\ResultN'
+            #print(filename)
             if os.path.isfile(filename):
+                #print(filename)
                 with open(filename) as f:
                     datastr=f.read().split()
                     datastr
                     for str in datastr:
-                        if str==',Jr=':
+                        if str=='Jr=':
                             jrN.append(float(datastr[datastr.index(str)+1]))
                             #print(jr[i])
                             #i+=1
                             #break
-                        elif str==',Energy=':
+                        elif str=='Energy=':
                             EnergyN.append(float(datastr[datastr.index(str)+1]))
                             #print(Energy[i])
                             #i+=1
@@ -46,18 +49,18 @@ for firstdir in os.listdir(path):
     firstdirname=path+'\\'+firstdir
     if os.path.isdir(firstdirname):
         for seconddir in os.listdir(path+'\\'+firstdir):
-            filename=path+'\\'+firstdir+'\\'+seconddir+'\\resultP'
+            filename=path+'\\'+firstdir+'\\'+seconddir+'\\ResultP'
             if os.path.isfile(filename):
                 with open(filename) as f:
                     datastr=f.read().split()
                     datastr
                     for str in datastr:
-                        if str==',Jr=':
+                        if str=='Jr=':
                             jrP.append(float(datastr[datastr.index(str)+1]))
                             #print(jr[i])
                             #i+=1
                             #break
-                        elif str==',Energy=':
+                        elif str=='Energy=':
                             EnergyP.append(float(datastr[datastr.index(str)+1]))
                             #print(Energy[i])
                             #i+=1
@@ -93,10 +96,10 @@ plt.rc('font',**font)
 ##for plot, we use markerfacecolor
 plt.plot(jrP, EnergyP, marker='o', markerfacecolor='none', markersize=2)
 plt.plot(jrN, EnergyN, linewidth=1, marker='s', markerfacecolor='none', markersize=2)
-plt.xticks([0, 0.3, 0.6],[0,0.6,1.2])
-plt.yticks([-5, 0, 5])
+plt.xticks([0, 0.3, 0.6])
+#plt.yticks([-5, 0, 5])
 
-plt.ylim((-5, 5))
+plt.ylim((-10, 5))
 plt.xlim((0, 0.6))
 
 #rc('text', usetex=True)
@@ -109,4 +112,4 @@ plt.tick_params(top=True, right=True, direction='in')
 plt.tight_layout()
 plt.savefig('D:\\books\\articles\\ARH\\2018_08_22\energy.eps')
 
-#plt.show()
+plt.show()

@@ -243,3 +243,4 @@ ModelManifest.xml
 *.sln
 *.pyproj
 /readdata/readdata/result
+/readdata/readdata/__pycache__
