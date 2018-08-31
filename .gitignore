@@ -244,3 +244,6 @@ ModelManifest.xml
 *.pyproj
 /readdata/readdata/result
 /readdata/readdata/__pycache__
+/readdata/readdata/result1/result_1/1
+/readdata/readdata/result1/result_1
+/readdata/readdata/result1

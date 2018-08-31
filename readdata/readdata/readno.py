@@ -88,34 +88,51 @@ matplotlib.rcParams['mathtext.it'] = 'Bitstream Vera Sans:italic'
 matplotlib.rcParams['mathtext.bf'] = 'Bitstream Vera Sans:bold'
 #############show AParticle#################################
 
-plt.figure(num=2, figsize=(cm2inch(8), cm2inch(6)))
+#fig=plt.figure(num=2, figsize=(cm2inch(8), cm2inch(5)))
 
 font={'family':'Times New Roman','size':10}
 
 plt.rc('font',**font)
 
 
+
+#=======to make the subplots adjust==========
+fig,axs=plt.subplots(2,1,sharex=True,figsize=(cm2inch(8), cm2inch(8)))
+
+fig.subplots_adjust(left=0.2,bottom=0.15,hspace=0)
+
 ###c is the parameter to control the center of marker. Empty means no center.
 ###this is for scatter
 
 ##for plot, we use markerfacecolor
-plt.plot(ParticleN[0:-1:2,0], ParticleN[0:-1:2,1], '--r',linewidth=0.5,marker='o', markerfacecolor='none', markersize=2)
-plt.plot(ParticleP[1:-1:2,0], ParticleP[1:-1:2,1], '--b',linewidth=0.5,marker='s', markerfacecolor='none', markersize=2)
+axs[0].plot(ParticleN[0:-1:2,0], ParticleN[0:-1:2,1], '--r',linewidth=0.5,marker='o', 
+         markerfacecolor='none', markersize=2, label='N')
+axs[0].plot(ParticleP[1:-1:2,0], ParticleP[1:-1:2,1], '--b',linewidth=0.5,marker='s',
+         markerfacecolor='none', markersize=2, label='P')
+axs[0].legend(frameon=False,loc=3)
 
-plt.xticks([0,0.5,1])
-plt.yticks([0,2, 4])
+#axs[0].set_xticks([0,0.5,1])
+axs[0].set_yticks([0.00,2.00, 4.00])
 
-plt.ylim((0, 4))
-plt.xlim((0, 1))
+axs[0].set_ylim((0, 4))
+#plt.xlim((0, 1))
 
-plt.xlabel(r"$t$", fontsize=12)
-plt.ylabel(r'$\langle a^\dag a\rangle$', fontsize=12)
+#plt.xlabel(r"$t$", fontsize=12)
+axs[0].set_ylabel(r'$\langle a^\dag a\rangle$', fontsize=12)
+axs[0].text(0.05,3,'(a)',fontsize=12)
+axs[0].yaxis.set_label_coords(-0.15,0.5)
+
+
+
+
+
+
 
 ##set the ticks. See the doc in class plt.tick_params
-plt.tick_params(top=True, right=True, direction='in')
+axs[0].tick_params(top=True, right=True, direction='in')
 
-plt.tight_layout()
-plt.savefig('D:\\books\\articles\\ARH\\2018_08_22\AParticle.eps')
+#plt.tight_layout()
+#plt.savefig('D:\\books\\articles\\ARH\\2018_08_22\AParticle.eps')
 
 #plt.figure(figsize=(12,9))
 
@@ -127,34 +144,46 @@ plt.savefig('D:\\books\\articles\\ARH\\2018_08_22\AParticle.eps')
 #######show the SigmaParticle###################
 
 
-plt.figure(num=3, figsize=(cm2inch(8), cm2inch(6)))
+#plt.figure(num=3, figsize=(cm2inch(8), cm2inch(6)))
 
-font={'family':'Times New Roman','size':10}
+#font={'family':'Times New Roman','size':10}
 
-plt.rc('font',**font)
+#plt.rc('font',**font)
+
+#ax=plt.subplot(1,2,2)
 
 
 ###c is the parameter to control the center of marker. Empty means no center.
 ###this is for scatter
 
 ##for plot, we use markerfacecolor
-plt.plot(ParticleN[0:-1:2,0], ParticleN[0:-1:2,2], '--r',linewidth=0.5,marker='o', markerfacecolor='none', markersize=2)
-plt.plot(ParticleP[1:-1:2,0], ParticleP[1:-1:2,2], '--b',linewidth=0.5,marker='s', markerfacecolor='none', markersize=2)
+axs[1].plot(ParticleN[0:-1:2,0], ParticleN[0:-1:2,2], '--r',linewidth=0.5,marker='o',
+         markerfacecolor='none', markersize=2, label='N')
+axs[1].plot(ParticleP[1:-1:2,0], ParticleP[1:-1:2,2], '--b',linewidth=0.5,marker='s',
+         markerfacecolor='none', markersize=2, label='P')
+axs[1].legend(frameon=False,loc=3)
 
-plt.xticks([0,0.5,1])
-plt.yticks([0,0.05, 0.1])
+#plt.xticks([0,0.5,1])
+axs[1].set_yticks([0,0.05, 0.1])
 
-plt.ylim((0, 0.1))
-plt.xlim((0, 1))
+axs[1].set_ylim((0, 0.12))
+#plt.xlim((0, 1))
+axs[1].set_ylabel(r'$\langle \sigma^+ \sigma^-\rangle$', fontsize=12)
 
-plt.xlabel(r"$t$", fontsize=12)
-plt.ylabel(r'$\langle a^\dag a\rangle$', fontsize=12)
 
+
+
+
+axs[1].set_xlabel(r"$t$", fontsize=12)
+axs[1].text(0.05,0.09,'(b)',fontsize=12)
+
+#ax.yaxis.set_label_position('right')
+#ax.yaxis.tick_right()
 ##set the ticks. See the doc in class plt.tick_params
 plt.tick_params(top=True, right=True, direction='in')
 
-plt.tight_layout()
-plt.savefig('D:\\books\\articles\\ARH\\2018_08_22\SigmaParticle.eps')
+#fig.tight_layout()
+fig.savefig('D:\\books\\articles\\ARH\\2018_08_22\grgcr1Particle.eps')
 
 #plt.figure(figsize=(12,9))
 
